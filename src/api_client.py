@@ -1,5 +1,5 @@
 import requests
-from src.config import API_KEY, BASE_URL
+from config import API_KEY, BASE_URL
 import logging
 
 class SportsDataIOClient:
@@ -9,8 +9,12 @@ class SportsDataIOClient:
 
     def get(self, endpoint: str) -> dict:
         url = BASE_URL + endpoint
-        response = requests.get(url, headers=self.headers)
-        if response.status_code != 200:
-            logging.error(f"Failed to fetch data from {url}, status code: {response.status_code}")
-            response.raise_for_status()
-        return response.json()
+        try:
+            response = requests.get(url, headers=self.headers)
+            if response.status_code != 200:
+                logging.error(f"Failed to fetch data from {url}, status code: {response.status_code}")
+                response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            logging.error(f"Error fetching data from {url}: {e}")
+            return {}

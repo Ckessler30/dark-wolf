@@ -21,4 +21,6 @@ ENDPOINTS = {
     "specific_event": "/events/{event_id}",
     "specific_game": "/seasons/{season}/types/{season_type}/weeks/{week_number}/events/{event_id}/competitions/{competition_id}",
     "roster_by_competitor_and_game": "/events/{event_id}/competitions/{competition_id}/competitors/{competitor_id}/roster",
+    "game_stats_by_player": "/events/{event_id}/competitions/{competition_id}/competitors/{competitor_id}/roster/{athlete_id}/statistics/0",
+    "game_stats_by_team": "/events/{event_id}/competitions/{competition_id}/competitors/{competitor_id}/statistics/0",
 }
